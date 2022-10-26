@@ -124,6 +124,11 @@
     width: 1.5rem;
     color: #000;
 }
+
+.navbar {
+    position: sticky;
+    Top: 0;
+
 .btnAnimate {
     transform: rotate(45deg);
     box-shadow: #444 5px 5px 10px;
