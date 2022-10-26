@@ -1,6 +1,13 @@
 const proyectosForm = document.getElementById('proyectosForm');
 let proyectos = [];
 
+let fechaHoy = new Date();
+
+function sumarDias(fecha, dias){
+    fecha.setDate(fecha.getDate() + dias);
+    return fecha;
+  }
+
 proyectosForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -10,8 +17,10 @@ proyectosForm.addEventListener('submit', (e) => {
     const tiempoP = form.get('tiempoP');
     const PrioridadP = form.get('PrioridadP');
     const descripcionP= form.get('descripcionP');
+    const fechaActual = fechaHoy.toLocaleDateString();
+    const fechaFin = sumarDias(new Date(), Number(tiempo.split(' ')[0]))
 
-    const proyecto = {proyectoX,responsable,tiempoP,PrioridadP,descripcionP};
+    const proyecto = {proyectoX,responsable,tiempoP,PrioridadP,descripcionP,fechaActual: fechaActual, fechaFinal: fechaFin.toLocaleDateString(), diasRestantes: (fechaFin - new Date())/(1000*60*60*24) };
 
     proyectos.push(proyecto);
     nuevoProyecto(proyectos);
@@ -32,7 +41,8 @@ const nuevoProyecto = (proyectos) => {
                 <div class="card-body">
                     <strong>Nombre del Proyecto:</strong> ${proyecto.proyectoX}<div></div>         
                     <strong class="p-1">Responsable:</strong> ${proyecto.responsable} 
-                    <strong class="p-1">Tiempo de ejecución:</strong> ${proyecto.tiempoP} 
+                    <strong class="p-1">Tiempo de ejecución:</strong> ${proyecto.tiempoP}
+                    <strong class="p-1">Dias restantes:</strong> ${tarea.diasRestantes}
                     <strong class="p-1">Prioridad:</strong> ${proyecto.PrioridadP}
                     <strong class="p-1">Descripción:</strong> ${proyecto.descripcionP}
                     <button href="#" class="btn m-2 btn-outline-info rounded" id="${proyecto.proyectoX}" name="delete" value="${proyecto.proyectoX}">Borrar</button>
