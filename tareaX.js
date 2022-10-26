@@ -17,7 +17,7 @@ tareaForm.addEventListener('submit', (e) => {
     const PrioridadT = form.get('PrioridadT');
     const tituloT = form.get('tituloTarea');
     const descripcionT= form.get('descripcionTarea');
-const fechaActual = fechaHoy.toLocaleDateString();
+    const fechaActual = fechaHoy.toLocaleDateString();
     const fechaFin = sumarDias(new Date(), Number(tiempo.split(' ')[0]))
     const tarea = {tareaX,tiempo,PrioridadT,tituloT,descripcionT, fechaActual: fechaActual, fechaFinal: fechaFin.toLocaleDateString(), diasRestantes: (fechaFin - new Date())/(1000*60*60*24) };
 
@@ -27,7 +27,7 @@ const fechaActual = fechaHoy.toLocaleDateString();
     guardarTareaStorage(tareas);
 });  
 
-const nuevaTarea = (tareas) => {
+    const nuevaTarea = (tareas) => {
 
     const listaTareas = document.getElementById("listaTareas");
     const div = document.createElement("div");
@@ -43,7 +43,7 @@ const nuevaTarea = (tareas) => {
                     <strong class="p-1">Tiempo de ejecución</strong> ${tarea.tiempo} 
                     <strong class="p-1">Dias restantes:</strong> ${tarea.diasRestantes}
                     <strong class="p-1">Prioridad:</strong> ${tarea.PrioridadT}
-                    <strong class="p-1">Título</strong:> ${tarea.tituloT} 
+                    <strong class="p-1">Título:</strong> ${tarea.tituloT} 
                     <strong class="p-1">Descripción:</strong> ${tarea.descripcionT}
                     <button href="#" class="btn btn-outline-info rounded m-2" id="${tarea.tituloT}" name="delete" value="${tarea.tituloT}">Borrar</button>
                 </div>
